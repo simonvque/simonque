@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../constants.dart';
+import 'default_button.dart';
+
+class HireMeCard extends StatelessWidget {
+  const HireMeCard({
+    Key? key,
+  }) : super(key: key);
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $url';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(kDefaultPadding * 2),
+      constraints: BoxConstraints(maxWidth: 1110),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [kDefaultShadow],
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+            "assets/images/email.png",
+            height: 80,
+            width: 80,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+            child: SizedBox(
+              height: 80,
+              child: VerticalDivider(),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Starting New Project?",
+                  style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: kDefaultPadding / 2),
+                Text(
+                  "Get and estimate for the new project",
+                  style: TextStyle(fontWeight: FontWeight.w200),
+                ),
+              ],
+            ),
+          ),
+          DefaultButton(
+            imageSrc: "assets/images/hand.png",
+            text: "Contact Me!",
+            press: () {
+              _launchUrl("https://www.linkedin.com/in/simon-que-018361264/");
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
