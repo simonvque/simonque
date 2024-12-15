@@ -79,10 +79,10 @@ flutter:
   fonts:
     - family: Sprite Graffiti
       fonts:
-        - asset: assets/fonts/Sprite Graffiti.otf
+        - asset: assets/fonts/SpriteGraffiti.otf
     - family: Doctor Soos
       fonts:
-        - asset: assets/fonts/Doctor Soos Light 1.1.ttf
+        - asset: assets/fonts/DoctorSoosLight.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
